@@ -11,8 +11,7 @@
     <script src="${static!}/source/js/widget_pin.js"></script>
 </#if>
 <#if is_post??>
-
-    <script src="${static!}/source/lib/toc/toc.min.js"></script>
+    <#--<script src="${static!}/source/lib/toc/toc.min.js"></script>-->
     <script>
         new Toc({
             wrapperId: 'post-article',
