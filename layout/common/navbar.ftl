@@ -59,7 +59,7 @@
 
                 </div>
                 <div class="navbar-end">
-                    <#--                ${settings.links_top!}-->
+                    ${settings.links_top!}
 <#--                    <a class="navbar-item search" title="夜间模式" href="javascript:alert('开发中，敬请期待');">-->
 <#--                        <i class="fas fa-adjust"></i>-->
 <#--                    </a>-->
