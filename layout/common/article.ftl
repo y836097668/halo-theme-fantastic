@@ -21,8 +21,10 @@
         <div class="card-content article " id="card-content" style="width: 100%">
             <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
                 <div class="level-left">
-                    <time class="level-item has-text-grey"
-                          datetime="${post.createTime!}">${post.createTime?string["EEE MMM d"]}</time>
+                    发表于：<time class="level-item has-text-grey"
+                          datetime="${post.createTime!}">${post.createTime?string["yyyy-MM-dd HH:mm:ss"]}</time>
+                    最后更新于：<time class="level-item has-text-grey"
+                              datetime="${post.updateTime!}">${post.updateTime?string["yyyy-MM-dd HH:mm:ss"]}</time>
                     <#if index>
                         <#if post.categories?? && post.categories?size gt 0>
                             <div class="level-item">
@@ -62,16 +64,8 @@
                 </h1>
             </#if>
 
-
-            <div id="<#if is_post??>post-article<#else>is-hidden-touch</#if>" class="content <#if is_post?? || is_sheet??>post-article<#else>is-hidden-touch</#if>">
-                <#if index && post.summary?? && post.summary!=''>
-                    ${post.summary!}
-                <#else>
-                    ${post.formatContent!}
-                </#if>
-            </div>
             <#if !index && tags?? && (tags?size gt 0)>
-                <div class="level is-size-7 is-uppercase">
+                <div class="level is-size-6">
                     <div class="level-start">
                         <div class="level-item">
                             <span class="is-size-6 has-text-grey has-mr-7">#</span>
@@ -83,6 +77,13 @@
                     </div>
                 </div>
             </#if>
+            <div id="<#if is_post??>post-article<#else>is-hidden-touch</#if>" class="content <#if is_post?? || is_sheet??>post-article<#else>is-hidden-touch</#if>">
+                <#if index && post.summary?? && post.summary!=''>
+                    ${post.summary!}
+                <#else>
+                    ${post.formatContent!}
+                </#if>
+            </div>
             <#if index && post.summary?? && post.summary!=''>
                 <div class="level is-mobile">
                     <div class="level-start">
@@ -100,6 +101,13 @@
         <#if (settings.donate_alipay?? && settings.donate_alipay!='') || (settings.donate_wechat?? && settings.donate_wechat!='')>
             <div class="card">
                 <div class="card-content">
+                    <p>
+                        本文由 <a href="${context!}">${user.nickname!}</a> 创作，
+                        <br>采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可
+                        <br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名
+                        <br>原文链接：<a href="${context!}/archives/${post.url!}">${context!}/archives/${post.url!}</a>
+                        <br>最后更新于：${post.editTime?string('yyyy-MM-dd HH:mm:ss')}
+                    </p>
                     <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
                     <div class="buttons is-centered">
                         <#if settings.donate_alipay?? && settings.donate_alipay!=''>
