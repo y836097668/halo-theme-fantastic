@@ -21,16 +21,15 @@
         <div class="card-content article " id="card-content" style="width: 100%">
             <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
                 <div class="level-left">
-                    发表于：<time class="level-item has-text-grey"
-                          datetime="${post.createTime!}">${post.createTime?string["yyyy-MM-dd HH:mm:ss"]}</time>
-                    最后更新于：<time class="level-item has-text-grey"
-                              datetime="${post.updateTime!}">${post.updateTime?string["yyyy-MM-dd HH:mm:ss"]}</time>
+                    <time class="level-item has-text-grey"
+                          datetime="${post.createTime!}">${post.createTime?string["yyyy-MM-dd EEE HH:mm:ss"]}</time>
                     <#if index>
                         <#if post.categories?? && post.categories?size gt 0>
                             <div class="level-item">
                                 <#list post.categories as category>
                                     <a class="has-link-grey -link"
-                                       href="${context!}/categories/${category.slugName!}">${category.name!}</a>&nbsp;
+                                       href="${context!}/categories/${category.slugName!}">${category.name!}</a>
+                                    <#if (category_has_next)>&nbsp;/&nbsp;</#if>
                                 </#list>
                             </div>
                         </#if>
@@ -39,7 +38,8 @@
                             <div class="level-item">
                                 <#list categories as category>
                                     <a class="has-link-grey -link"
-                                       href="${context!}/categories/${category.slugName!}">${category.name!}</a>&nbsp;
+                                       href="${context!}/categories/${category.slugName!}">${category.name!}</a>
+                                    <#if (category_has_next)>&nbsp;/&nbsp;</#if>
                                 </#list>
                             </div>
                         </#if>
@@ -65,13 +65,14 @@
             </#if>
 
             <#if !index && tags?? && (tags?size gt 0)>
-                <div class="level is-size-6">
+                <div class="level is-size-7">
                     <div class="level-start">
                         <div class="level-item">
                             <span class="is-size-6 has-text-grey has-mr-7">#</span>
                             <#list tags as tag>
                                 <a class="has-link-grey -link"
-                                   href="${context!}/tags/${tag.slugName!}">${tag.name!}</a>&nbsp;
+                                   href="${context!}/tags/${tag.slugName!}">${tag.name!}</a>
+                                <#if (tag_has_next)>&nbsp;/&nbsp;</#if>
                             </#list>
                         </div>
                     </div>
