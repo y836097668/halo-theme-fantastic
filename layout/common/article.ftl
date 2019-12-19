@@ -123,7 +123,7 @@
         </#if>
     </#if>
 
-    <#if !index && nextPost?? && prePost??>
+    <#if !index && (nextPost?? || prePost??)>
         <div class="card card-transparent">
             <div class="level post-navigation is-flex-wrap is-mobile">
                 <#if prePost??>
